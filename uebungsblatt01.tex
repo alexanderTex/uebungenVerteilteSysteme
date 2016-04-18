@@ -1,0 +1,303 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb,amsthm,amsfonts,amsbsy,latexsym}
+
+\usepackage[utf8]{inputenc}
+
+
+\usepackage[T1]{fontenc}
+\usepackage{enumerate,url}
+\usepackage{graphicx}
+\usepackage{bibgerm}
+\usepackage[babel,german=guillemets]{csquotes}
+%\usepackage{biblatex}
+%\usepackage[style=numeric-comp]{biblatex}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[svgnames]{xcolor}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{listings}		% Quelltext verwenden
+\usepackage{color}
+
+\usepackage{fancybox}  	% Box um Formel
+ \usepackage{varwidth}
+ 
+ \usepackage{lscape}
+
+%
+%   Hier beginnt das Hauptdokument
+%
+
+\begin{document}
+\thispagestyle{empty}
+
+%
+%	Titelseite
+%
+\thispagestyle{empty}
+\begin{center}
+\Large{Hochschule für Technik und Wirtschaft Berlin (HTW)}\\
+\end{center}
+ 
+ 
+\begin{center}
+\Large{Fachbereich 4 - Informatik, Kommunikation und Wirtschaft}
+\end{center}
+\begin{verbatim}
+
+
+\end{verbatim}
+\begin{center}
+\textbf{\LARGE{Belegarbeit}}
+\end{center}
+\begin{verbatim}
+ 
+ 
+\end{verbatim}
+\begin{center}
+\textbf{im Studiengang Angewandte Informatik}
+\end{center}
+\begin{verbatim}
+\end{verbatim}
+ 
+\begin{flushleft}
+\begin{tabular}{lll}
+\textbf{Fach:} & & Mathematik 3\\
+& & \\
+& & \\
+\textbf{Thema:} & & Beleg 2 - Iteration\\
+\textbf{Bschreibung:}& & Näherungsverfahren einer Gleichung \\
+\textbf{}& & nach dem Tangentenverfahren von Isaac Newton \\
+& & \\
+& & \\
+\textbf{eingereicht von:} & & Alexander Lüdke,\\
+& & MatrNr.: 548965\\
+& & \\
+\textbf{eingereicht am:} & & 25.11.2015, Wintersemester 2015/16 \\
+& & \\
+& & \\
+\textbf{Dozentin:} & & Dipl. Math. Petra Schumann
+\end{tabular}
+\end{flushleft}
+
+\newpage
+
+\thispagestyle{empty}
+
+\tableofcontents
+%\maketitle
+
+\newpage
+\setcounter{page}{3}
+\section{Einleitung}
+Diese Belegarbeit stellt die erste von zwei Semesterbeurteilungen  dar und befasst sich mit der Berechnung  des
+Näherungsverfahren einer Gleichung nach dem Tangentenverfahren von Isaac Newton mittels GNU Octave. Dieses 
+Dokument ist grob in drei Teile untergliedert.
+\begin{enumerate}
+	\item Einleitung und Aufgabenstellung
+	\item Durchführung der Newton Iteration
+	\item Struktogramme und Befehlsreferenzen
+\end{enumerate}
+
+
+\section{Belegaufgabe}
+Für die Funktion $y= (x-3) \cdot (x+2)$ soll die positive Nullstelle bestimmt werden. Ermitteln Sie diese
+nach der Newton-Iteration aus der Funktionsdeklaration. Der Startwert $x_{0}$ soll beliebig eingebbar
+sein. Anhand der Lipschitzbedingung ist zu prüfen, ob es sich um einen optimalen Startwert handelt.
+Das Prüfergebnis ist als Kommentar auszugeben. Es sollen alle Iterationsschritte protokolliert 
+werden, der Abbruch kann nach der k'ten Iteration erfolgen, falls $| f(xk) |< (eps=0.0005)$. 
+Geben Sie die Iteration grafisch aus.
+
+\section{Manuelle \glqq{}händische\grqq{}  Berechnung}
+
+% Ableitung bilden
+	\subsection{Ableitungen bilden}
+	\begin{tabular}{lll}
+		\textbf{Eingangsfunktion:} & & $f(x) =  (x-3) \cdot (x+2) \Leftrightarrow x^2-x-6$ \\
+		\textbf{erste Ableitung:} & & $f'(x) = 2x-1$\\
+		\textbf{zweite Ableitung:} & & $f''(x) = 2$\\
+	\end{tabular}
+	
+% Startwert beestimmen
+	\subsection{Startwert bestimmen durch Prüfung der Lipschitzbedingung}
+		
+	% Lipschitzformel
+		\fbox{
+		\begin{tabular}{lll}
+		\textbf{Lipschitzformel:} & & 
+		$
+		\left| \dfrac{f(x_{0}) \cdot f''(x_{0})}{f'(x_{0})^{2}} \right|< 1
+		$
+		\end{tabular}
+		}
+		
+		\begin{tabular}{lll}
+	% x0 Wert
+		\\
+		\textbf{$x_{0}$ festlegen:} & & $x_{0} = 2$ \\
+		\textbf{$x_{0}$ einsetzen:} & & $f(2) = 2^2-2-6 = -4$ \\
+		\textbf{} & & $f'(2) = 2 \cdot 2 -1$ = 3 \\
+		\textbf{} & & $f''(2) = 2$ \\ \\
+		
+	% Lipschitzformel anwenden
+		\textbf{Lipschitzformel anwenden:} & &
+			$
+			\left| \dfrac{f(2) \cdot f''(2) \vert}{\vert f'(2)^{2}}\right| = 
+			\left| \dfrac{ -4 \cdot 2}{9}\right| =
+			\left| \dfrac{-8}{9}\right| =$ \\ \\
+			& &
+			$
+			= \left| -0,\overline{8}\right| \approx \vert -0,8889 \vert   < 1 
+			$
+			
+		\end{tabular}
+		
+	% Newton Iteration	
+	\subsection{Newton Iteration durchführen}
+		
+	% Newton Iteration Formel
+		\fbox{
+			\begin{tabular}{lll}
+				\textbf{Newton-Iteration Formel:} & &
+				$
+				x_{k+1} = x_{k} - \dfrac{f(x_{k})}{f'(x_{k})}
+				$
+			\end{tabular}
+			}
+
+		\begin{tabular}{lll}
+		\\
+		\textbf{Abbruchbedingung:} & & $| f(x_{k}) |< (eps = 0.0005)$ \\ \\
+		
+	%  1. Iterationen
+		\textbf{1. Iteration:} & &
+		$
+		x_{1} = x_{0} - \dfrac{f(x_{0})}{f'(x_{0})} = 2 - \dfrac{-4}{3} = 3,\overline{3}  \approx 3,3333
+		$ \\ \\
+		\textbf{} & &
+		$
+		f(3,3333) = 1,77758889 \approx 1,7776 \not< eps
+		$ \\ \\
+		
+	%  2. Iterationen
+		\textbf{2. Iteration:} & &
+		$
+		x_{2} = x_{1} - \dfrac{f(x_{1})}{f'(x_{1})} = 3,3333 - \dfrac{1,7776}{5,6666} \approx 3,0196
+		$ \\ \\
+		\textbf{} & &
+		$
+		f(3,0196) = 0,09838416  \approx 0,09838  \not< eps
+		$ \\ \\
+		
+	%  3. Iterationen
+		\textbf{3. Iteration:} & &
+		$
+		x_{3} = x_{2} - \dfrac{f(x_{2})}{f'(x_{2})} = 3,0196  - \dfrac{0,09838}{5,0392} \approx 3,00008
+		$ \\ \\
+		\textbf{} & &
+		$
+		f(3,00008) = 0,09838416  \approx 0,0004  < eps
+		$ \\
+		\end{tabular}
+
+\section{Umsetzung in GNU Octave}
+	\subsection{Eingabe der Funktion}
+		Die Eingabe der Grundfunktion $(\textbf{1}\cdot x^2\textbf{-1}\cdot x^1\textbf{-6} \cdot x^0)$  wird in Form der Koeffizientendarstellung eingetragen. \\ \\
+		\textbf{$>>$ grundFunktion = [1 -1 -6]; }
+	
+	\subsection{Startwert eingeben und Prüfung der Lipschitzbedingung}
+		Zur Überprüfung des optimalen Startwertes, wird an dieser Stelle die Funktion \textit{lipschitzBedingung()} aufgerufen und die 
+		zuvor erstellte Grundfunktion \textit{grundFunktion} als Parameter übergeben. Der Rückgabewert wird an die Variable \textit{lipschitzWert} übergeben, wenn die Bedingung
+		\textit{Lipschitzwert < 1} erfüllt ist. \\ \\
+		\textbf{$>>$ lipschitzWert = lipschitzBedingung(grundFunktion); }
+			
+	\subsection{Newton Iteration durchführen}
+		Nachdem die Lipschitzbedingung erfüllt, d.h. der optimale Startwert durch den Benutzer eingegeben wurde, wird die Funktion \textit{newtonIteration()} aufgerufen. 
+		Die Übergabewerte sind die  Grundfunktion \textit{grundFunktion}, die Abbruchbedingung bzw. Fehlertoleranz (eps) \textit{5e-4} und der Lipschitzwert \textit{lipschitzWert}. \\ \\
+		\textbf{$>>$ newtonIteration(grundFunktion, 5e-4, lipschitzWert)}
+		
+	\subsection{Visualisierung}
+	
+	\subsubsection{textuelle Ausgabe}
+		\lstset{language=}
+			\lstinputlisting[emphstyle=\underbar, 
+			breaklines=true,
+			frame=tlrb]
+			{./textAusgabe}
+			
+	\subsubsection{grafische Ausgabe}
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[scale=0.5]{plot.pdf}
+		\caption{Grundfunktion und Tangenten}
+		\end{figure}
+	
+	\section{Skript (.m-Datei)}
+		\subsection{mainNewtonIteration.m}
+			\lstset{language=}
+			\lstinputlisting[emphstyle=\underbar, 
+			breaklines=true, 
+			frame=tlrb,
+			caption={mainNewtonIteration.m}]
+			{./mDaten/mainNewtonIteration.m}
+			
+		\subsection{lipschitzBedingung.m}
+			\lstset{language=}
+			\lstinputlisting[emphstyle=\underbar, 
+			breaklines=true, 
+			frame=tlrb,
+			caption={lipschitzBedingung.m}]
+			{./mDaten/lipschitzBedingung.m}
+			
+		\subsection{newtonIteration.m}
+			\lstset{language=}
+			\lstinputlisting[emphstyle=\underbar, 
+			breaklines=true, 
+			frame=tlrb,
+			caption={newtonIteration.m}]
+			{./mDaten/newtonIteration.m}
+			
+		\subsection{tangentenBerechnung.m}
+			\lstset{language=}
+			\lstinputlisting[emphstyle=\underbar, 
+			breaklines=true, 
+			frame=tlrb,
+			caption={tangentenBerechnung.m}]
+			{./mDaten/tangentenBerechnung.m}	
+		
+\newpage
+
+\begin{landscape}
+	\begin{figure}[ht]
+	\section{Struktorgramme}
+			\centering
+			\includegraphics[scale=0.8]{./struktogramme/zusammenfassungStrukto.pdf}
+		\caption{Struktogramme}
+		\end{figure}	
+\end{landscape}
+
+
+\section{Befehlsreferenz}
+		\begin{itemize}
+			\item \textbf{lipschitzBedingung}    Funktion zur Berechnung des optimalen Startwertes.
+			\item \textbf{newtonIteration()}    Funktion zur Durchführung der Newton Iteration, welche gleichzeitig die entsprechende Funktion
+			grafisch ausgibt.
+			\item \textbf{tangentenBerechnung()}  Funktion dient in erster Linie zur grafischen Ausgabe der Tangenten innerhalb der Newton Iteration. 	
+			\item \textbf{clc} Löscht die bisherigen Ausgabe vom Befehlsfenster.
+			\item \textbf{clear * all} Löst die Variableninitialisierung.
+			\item \textbf{polyder()} Bildung von Ableitungen
+			\item \textbf{polyval()} Berechnung Funktionswert
+			\item \textbf{disp()} Textausgabe
+			\item \textbf{printf()} Formatierte Textausgabe
+			\item \textbf{plot()} Grafische Ausgabe
+			\item \textbf{do-until} Wiederholung (Schleife)
+			\item \textbf{if-else-endif} Alternation (Bedingung)
+		\end{itemize}	
+		
+\end{document}

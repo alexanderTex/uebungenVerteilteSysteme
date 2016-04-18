@@ -1,0 +1,7 @@
+# Kompilierdaten von Tex ausschliessen, 
+# da sie mit Hilfe der .tex Datei generiert werden koennen.
+*.aux
+*.log
+*.pdf
+*.gz
+*.toc
