@@ -116,23 +116,88 @@
 \setcounter{page}{3}
 \section{Übung 01}
 
+
+
 \subsection{Definition verteilter Systeme}
-	\begin{enumerate}[label=\alph*)]
-		\item Test 1
-		\item Test 2
-		\item Test 3
-		\item Test 4
-	\end{enumerate}
+Das System a), eine dezentral organisierte Büroumgebung auf einem Workstation-Netz, und d) ein Grid-System sind nach der Definition von Schill und Springer [2012,4] und Günther Bengel [2014,12ff] verteilte Systeme. 
 
 \subsection{Ressourcen}
+	\subsubsection{Hardware-Ressourcen}
+		\begin{itemize}
+			\item Festplatten als Massenspeicher
+			\item Bandlaufwerke zur Datensicherung
+			\item Drucker
+			\item CPU
+		\end{itemize}
+	\subsubsection{Daten- und Software-Ressourcen (Verteilte Anwendungen)}
+		\begin{itemize}
+			\item Datenbanksystem
+			\item Cloud-Printing
+			\item Applikation
+		\end{itemize}
+	\subsubsection{Anwendungsbeispiele aus beiden Ressoucen-Typen}
+		\begin{itemize}
+			\item Einfache verteilte Anwendungen (www, E-Mail)
+			\item Komplexe Anwendungen (Grid Computingm, Bürokommunikation, Wettersimulation)
+			\item Eingebettete verteilte Systeme (Automobilindustrie, Hausautomation)
+			\item Mobile verteilte Systeme (portable Geräte, Mobilfunk)
+		\end{itemize}
+		[Irmscher, Klaus (2013), Scriptum zur Lehrveranstaltung Verteilte Systeme. Online: \url{https://www.daf.tu-berlin.de/fileadmin/fg75/PDF/Zitieren.pdf}; Seite 7; Stand: 18.04.2016]
+
+
 
 \subsection{Sicherheit}
+%Fußnote - Quelle: Schill Springer [2012:133ff]
+Der Bereich Sicherheit in verteilten Systemen untergliedert sich in vier Kategorien und kann auf das genannte Beispiel wie folgt interpretiert werden.
+	\begin{itemize}
+	
+		\item \textbf{Verhindern} \\ 
+		Der Dienst wird mit Anfragen überflutet, was dazu führt, dass die Teilnehmer nicht mehr in der Lage sind Nachrichten auszutauschen.
+		
+		\item \textbf{Erlangen} \\ 
+		Das Abfangen der Daten durch Dritte führt zu einer Beeinträchtigung der Vertraulichkeit, sowie den Zugriffsschutz der Ressourcen.
+		
+		\item \textbf{Modifizieren und Fälschen} \\ 
+		Das Verändern der Daten durch Dritte würde zu Integritätsverlust führen, darüber hinaus ist es möglich die Betroffenen in ihrem Handeln zu manipulieren.
+		
+	\end{itemize}
+Um diesen Sicherheitsproblemen entgegenzuwirken wurden Sicherheitsmechanismen bereitgestellt, die in Folgende Schutzziele unterteilt sind:
+	\begin{itemize}
+	
+		\item \textbf{Vertraulichkeit} \\ 
+		Die Inhalte der Kommunikationsnachrichten müssen vor unberechtigten Teilnehmern geschützt werden.
+		
+		\item \textbf{Integrität} \\ 
+		Die übertragenen Daten dürfen nicht unberechtigt verändert worden sein bzw. eventuelle Änderungen müssen erkannt werden.
+		
+		\item \textbf{Verfügbarkeit} \\
+		Die Bereitstellung der Dienste, Informationen und Kommunikationsverbindungen muss zum Zeitpunkt der Kommunikation bereitstehen.
+		
+		\item \textbf{Authentizität} \\
+		Es stellt die Überprüfbarkeit bzw. Echtheit der Nachricht und des Absenders sicher.
+		
+		\item \textbf{Zugriffsschutz} \\
+		Die Verhinderung von Zugriff auf Ressourcen durch unberechtigten Zugriff.
+		
+		\item \textbf{Zurechenbarkeit} \\
+		Ein eindeutige Zuordnung von Interaktionen zu eine Instanz bzw. Person.
+		
+		\item \textbf{Anonymität} \\
+		Diese steht der Authentizität gegenüber und soll den Benutzern die Möglichkeit bieten, eine Kommunikation ohne Preisgabe der persönlichen Daten aufzubauen wobei man hier den Einsatz von Pseudonymen vorsieht. 
+	\end{itemize}
+Um die Schutzziele Vertraulichkeit, Integrität und Authentizität zu realisieren, verwendet man  unterschiedliche Verschlüsselungsverfahren (Symmetrische- und Asymmetrische Kryptoverfahren). Diese erlauben die gesendeten Nachrichten zu ver- und entschlüsseln, sowie ihnen eine digitale Signatur anzuhängen. Mittels Autorisierung in Form von Zugriffsmatrizen, den daraus resultierenden Zugriffskontrolllisten (Access Control List, ACL) und die Einteilung in Gruppen und Rollen ist es möglich die Ziele des Zugrifftsschutz und der Zurechenbarkeit zu realisieren. Zusätzlich sollten die Systeme, die zum Nachrichtenaustausch eingesetzt werden mittels Firewall geschützt werden.
+
+
 
 \subsection{n-tier-Architekturen}
+Diese Architektur ist in drei Schichten (tiers) unterteilt, der Benutzerschnittstelle (presentation tier), der Anwendungs- Logikschicht (logic tier) und Datenschicht (data tier). Diese bauen von unten nach oben aufeinander auf, wobei die obere Schicht immer von den Schichten darunter abhängig ist. D.h., wenn die untere Schicht verändert wird, müssen auch die darüber liegenden Schichten angepasst werden. Ein Beispiel ist das Aufrufen von Websites. Hierbei wird eine Anfrage für eine Website an einen Webserver als Einstiegspunkt gewählt. Dieser leite die Anfrage an den Anwendungsserver weiter, auf dem die eigentliche Verarbeitung stattfindet, der wiederum mit einem Datenbankserver zusammenarbeitet. Das Ergebnis der Anfrage vom Webserver wird in Anschluss auf umgekehrten Weg wieder zurück an ihn gesendet (Datenbankserver -> Anwendungsserver -> Webserver).
+
+Quelle: http://www.mrknowing.com/2013/11/08/wie-funktioniert-die-3-schichten-architektur/; Stand: 20.04.2016 \\ Tanenbaum & van Steen [2008:61f]
 
 \subsection{Verteilung}
+
 
 \subsection{Uhrensynchronisierung}
 
 
-\end{document}
+\end{document} 
