@@ -192,12 +192,25 @@ Um die Schutzziele Vertraulichkeit, Integrität und Authentizität zu realisiere
 \subsection{n-tier-Architekturen}
 Diese Architektur ist in drei Schichten (tiers) unterteilt, der Benutzerschnittstelle (presentation tier), der Anwendungs- Logikschicht (logic tier) und Datenschicht (data tier). Diese bauen von unten nach oben aufeinander auf, wobei die obere Schicht immer von den Schichten darunter abhängig ist. D.h., wenn die untere Schicht verändert wird, müssen auch die darüber liegenden Schichten angepasst werden. Ein Beispiel ist das Aufrufen von Websites. Hierbei wird eine Anfrage für eine Website an einen Webserver als Einstiegspunkt gewählt. Dieser leite die Anfrage an den Anwendungsserver weiter, auf dem die eigentliche Verarbeitung stattfindet, der wiederum mit einem Datenbankserver zusammenarbeitet. Das Ergebnis der Anfrage vom Webserver wird in Anschluss auf umgekehrten Weg wieder zurück an ihn gesendet (Datenbankserver -> Anwendungsserver -> Webserver).
 
-Quelle: http://www.mrknowing.com/2013/11/08/wie-funktioniert-die-3-schichten-architektur/; Stand: 20.04.2016 \\ Tanenbaum & van Steen [2008:61f]
+Quelle: http://www.mrknowing.com/2013/11/08/wie-funktioniert-die-3-schichten-architektur/; Stand: 20.04.2016 \\ Tanenbaum \& van Steen [2008:61f]
 
 \subsection{Verteilung}
-
+	\begin{itemize}
+		\item horizontale Verteilung \\
+		Hierbei können ein Client oder ein Server physisch in logisch gleichwertige Teile gegliedert werden. Wobei jeder dieser Teile mit einem eigenen Anteil der vollständigen Datenmenge arbeitet, was dazu führt, dass die Gesamtlast verteilt wird.
+		
+		\item vertikale Verteilung \\
+		In dieser Architektur entsprechen die Tiers direkt der logischen Anordnung der Anwendungen. D.h. die Funktionen sind logisch und physisch über mehrere Computer verteilt, wobei jeder Rechner auf eine bestimmte Gruppe von Funktionen zugeschnitten ist.
+	\end{itemize}
 
 \subsection{Uhrensynchronisierung}
 
-
+	% Aufzählung mit kleinen Buchstaben und Klammer -> a), b), ...
+	\renewcommand{\labelenumi}{\alph{enumi})}
+	\begin{enumerate}
+		\item Im lokalen Netzwerk behält jeder Rechner seine eigene lokale Zeit im Auge. Eine Möglichkeit trotz, relativer Ungenauigkeit, Daten auszutauschen, die einen Bezug zu Zeit haben, sind die logischen Uhren von Lamport. Logischen Uhren müssen nicht zwangsläufig mit der aktuellen (physischen) Zeit übereinstimmen. Hierbei geht es lediglich um die Ausstellung von Zeitstempeln die in Relation zu einander gesetzt werden(a geht b voraus [a -> b]). Ein Beispiel hierfür sind Makefiles. 
+		
+		\item Die Computer, die in der Lage sind auf das Internet zuzugreifen, lösen ihr Synchronisationsproblem durch einen Zeitserver, der die exakte Zeit bereitstellt, da er mit einer exakten Uhr ausgestattet ist. Das Problem hierbei ist die Nachrichtenverzögerung, nachdem ein Client eine Zeitanfrage stellt. Hierbei kommt das Network Time Protocol (NTP) zum Einsatz, welches durch Berechnung die zuverlässigste Schätzung der Abweichung ermittelt, was zu einer weltweiten Genauigkeit von 1 bis 50 ms führt.
+	\end{enumerate}
+	
 \end{document} 
