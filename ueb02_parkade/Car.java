@@ -7,34 +7,18 @@
 public class Car extends Thread {
 
     // /===============================================================================================\
-    //
     //    variables
-    //
     // \===============================================================================================/
 
     // /----------------------------------------------------\
-    //
-    //    public
-    //
-    // /----------------------------------------------------/
-
-    public int nr;
-
-    // /----------------------------------------------------\
-    //
     //    private
-    //
     // /----------------------------------------------------/
 
-    private Parkade parkade;
-
-
-
+    private Parkade parkade;    // parkade
+    private int nr;             // serial number
 
     // /===============================================================================================\
-    //
     //    constructors
-    //
     // \===============================================================================================/
 
     /**
@@ -50,32 +34,28 @@ public class Car extends Thread {
         this.nr = nr;
     }
 
-
-
     // /===============================================================================================\
-    //
     //    methods
-    //
     // \===============================================================================================/
-
 
     /**
      * start the new thread "car"
      */
     public void run()
     {
-            // add car to queue
-            parkade.enter(this);
-            System.out.println(this.nr + ": enter");
+        // add car to queue/parkade
+        this.parkade.enter(this);
+        System.out.println(this.nr + ": enter");
 
-            // The fake delay for the car to get off.
-            try {
-                sleep((int)(Math.random() * 3000));
-            }
-            catch (InterruptedException e){}
+        // fake delay for the car to get off.
+        try
+        {
+            this.sleep((int)(Math.random() * 3000));
+        }
+        catch (InterruptedException e){}
 
-            // remove car from queue
-            parkade.leave(this);
-            System.out.println(this.nr + ": leave");
+        // remove car from queue/parkade
+        this.parkade.leave(this);
+        System.out.println(this.nr + ": leave");
     }
 }
