@@ -1,5 +1,6 @@
 /**
- * @author Alexander Luedke, 548965
+ * @author  Sascha Bussian, 549087
+ *          Alexander Luedke, 548965
  * @version 1.0
  * filename:    mainParkade.java
  * created:     03.05.2016
@@ -9,7 +10,7 @@ public class mainParkade
     public static void main(String[] ars)
     {
         // create parkade
-        Parkade parkade = new Parkade(3);
+        Parkade parkade = new Parkade(4);
 
         // create cars
         Car c1 = new Car(parkade,01);
@@ -25,11 +26,14 @@ public class mainParkade
         c4.start();
         c5.start();
 
-        // wait for last leaving car
         try {
-            Thread.sleep(9000);
-        } catch(InterruptedException ex) {};
-
+            c1.join();
+            c2.join();
+            c3.join();
+            c4.join();
+            c5.join();
+        }
+         catch (InterruptedException i) {}
         // controloutput for overall in- and ouputs.
         System.out.print("Ein- und Ausfahrten: " + parkade.getInOutCount());
 

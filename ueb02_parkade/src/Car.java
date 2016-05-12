@@ -1,5 +1,6 @@
 /**
- * @author Alexander Luedke, 548965
+ * @author  Sascha Bussian, 549087
+ *          Alexander Luedke, 548965
  * @version 1.0
  * filename:    Car.java
  * created:     03.05.2016
