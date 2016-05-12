@@ -7,3 +7,5 @@
 *.toc
 *.class
 *.xml
+.*
+!.gitignore
