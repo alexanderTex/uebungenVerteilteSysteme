@@ -24,9 +24,8 @@ public class startRmiClient
      */
     public static void main(String[] args)
     {
-        // Check arguments for two inputs
-        if(args.length !=2)
-        {
+        if(args.length !=2) {
+            // Check arguments for two inputs
             System.out.println("The application needs two arguments: " + "<servername>" + "<nickname>");
         }
 
@@ -40,7 +39,6 @@ public class startRmiClient
             */
 
             chatServer.addClient(chatClientImpl);       // add client to server array
-
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
             /*
                  Wrapping an InputStreamReader within a BufferedReader,
@@ -58,26 +56,20 @@ public class startRmiClient
             String activity = "0";          // Initialise the selection
             while (!activity.equals("2")) {
                 // Selection menue ("2" == exit loop)
-
                 System.out.println("\n acitvity: \n 1) send message \n 2) exit");   // selection option
                 System.out.print("choose activity: ");
                 activity = bufferedReader.readLine();                               // user input
 
                 switch (activity) {
                     // activity selection
-
                     case "1": {
                         // send message
-
                         while (!activity.equals("0")) {
                             // send messages until input == "0"
-
                             System.out.print("\nmsg: ");
                             activity = bufferedReader.readLine();            //Input message
-
                             if (!activity.equals("0")) {
                                 // No output for "0"
-
                                 chatServer.sendMessage(args[1], activity);   // Send message to server
                             }
                         }
@@ -86,7 +78,6 @@ public class startRmiClient
 
                     case "2": {
                         // exit application
-
                         chatServer.removeClient(chatClientImpl);            // remove Client from server array
                         System.out.println("exit");
                         break;
@@ -94,15 +85,13 @@ public class startRmiClient
 
                     default: {
                         // wrong input
-
                         System.out.println("false activity");
                         break;
                     }
                 }
             }
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             System.out.print(e);
         }
     }

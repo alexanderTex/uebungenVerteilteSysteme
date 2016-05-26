@@ -21,9 +21,7 @@ import java.rmi.registry.Registry;
  */
 public class startRmiServer
 {
-
     static Registry registry;    // Instance of the interface Registry
-
     public static void main(String[] args)
     {
         try
