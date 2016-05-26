@@ -9,7 +9,6 @@
 package rmiClient;
 
 import rmiClassInterface.*;
-
 import java.io.*;
 import java.rmi.Naming;
 
@@ -28,7 +27,6 @@ public class startRmiClient
             // Check arguments for two inputs
             System.out.println("The application needs two arguments: " + "<servername>" + "<nickname>");
         }
-
         try
         {
             ChatClientImpl chatClientImpl = new ChatClientImpl(args[1]);    // ChatClient Instance
@@ -75,14 +73,12 @@ public class startRmiClient
                         }
                         break;
                     }
-
                     case "2": {
                         // exit application
                         chatServer.removeClient(chatClientImpl);            // remove Client from server array
                         System.out.println("exit");
                         break;
                     }
-
                     default: {
                         // wrong input
                         System.out.println("false activity");

@@ -9,7 +9,6 @@
 package rmiServer;
 
 import rmiClassInterface.*;
-
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -37,7 +36,7 @@ public class startRmiServer
             Naming.rebind("rmiServer", csi);            //Rebinds the specified name to the remote object (ChatServerImpl).
             System.out.print("chat-Server started under /rmiServer");
         }
-        catch (RemoteException re){
+        catch (RemoteException re) {
             System.out.print(re);
         }
         catch (MalformedURLException mfurle) {
