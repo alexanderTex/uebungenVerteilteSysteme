@@ -16,18 +16,27 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-
+/**
+ * The chat server
+ */
 public class startRmiServer
 {
-    static Registry reg;
+
+    static Registry registry;    // Instance of the interface Registry
 
     public static void main(String[] args)
     {
         try
         {
-            reg = LocateRegistry.createRegistry(1099);
-            ChatServerImpl csi = new ChatServerImpl();
-            Naming.rebind("rmiServer", csi);
+            registry = LocateRegistry.createRegistry(1099);
+            /*
+                Returns a reference to the remote object
+                Registry for the local host on the specified port.
+                Create a remote object registry that accepts calls on a specific port.
+            */
+
+            ChatServerImpl csi = new ChatServerImpl();  // ChatServerImpl Instance
+            Naming.rebind("rmiServer", csi);            //Rebinds the specified name to the remote object (ChatServerImpl).
             System.out.print("chat-Server started under /rmiServer");
         }
         catch (RemoteException re){

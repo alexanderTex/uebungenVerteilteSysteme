@@ -32,53 +32,69 @@ public class startRmiClient
 
         try
         {
-            // args[0] == localhost; args[1] == alex
-            ChatClientImpl chatClientImpl = new ChatClientImpl(args[1]);
+            ChatClientImpl chatClientImpl = new ChatClientImpl(args[1]);    // ChatClient Instance
             ChatServer chatServer = (ChatServer) Naming.lookup("rmi://" + args[0] + "/rmiServer");
+            /*
+                Returns a chatserver reference, a stub, for the remote
+                object (chatserver) associated with the specified name.
+            */
 
-            chatServer.addClient(chatClientImpl);
+            chatServer.addClient(chatClientImpl);       // add client to server array
 
-            InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+            /*
+                 Wrapping an InputStreamReader within a BufferedReader,
+                 that is reading from the underlying byte-input stream.
 
-            boolean exitApplication = false;
-            while (exitApplication == false)
-            {
-                System.out.println("\n acitvity: \n 1) send message \n 2) exit");
+                 InputStreamReader
+                    is a bridge from byte streams to character streams.
+                    It reads bytes and decodes them into characters.
+
+                 BufferedReader
+                    reads text from a character-input stream (buffering characters).
+                    The buffer size may be specified, or the default size may be used.
+             */
+
+            String activity = "0";          // Initialise the selection
+            while (!activity.equals("2")) {
+                // Selection menue ("2" == exit loop)
+
+                System.out.println("\n acitvity: \n 1) send message \n 2) exit");   // selection option
                 System.out.print("choose activity: ");
-                String activity = bufferedReader.readLine();
+                activity = bufferedReader.readLine();                               // user input
 
                 switch (activity) {
+                    // activity selection
 
-                    case "1":
-                    {
-                        String inputBuffer = "1";
-                        while (!inputBuffer.equals("0"))
-                        {
-                            // Input message
+                    case "1": {
+                        // send message
+
+                        while (!activity.equals("0")) {
+                            // send messages until input == "0"
+
                             System.out.print("\nmsg: ");
-                            inputBuffer = bufferedReader.readLine();
+                            activity = bufferedReader.readLine();            //Input message
 
-                            // No output for "0"
-                            if (!inputBuffer.equals("0"))
-                            {
-                                // Send message to server
-                                chatServer.sendMessage(args[1], inputBuffer);
+                            if (!activity.equals("0")) {
+                                // No output for "0"
+
+                                chatServer.sendMessage(args[1], activity);   // Send message to server
                             }
                         }
                         break;
                     }
 
-                    case "2":
-                    {
-                        exitApplication = true;
-                        chatServer.removeClient(chatClientImpl);
+                    case "2": {
+                        // exit application
+
+                        chatServer.removeClient(chatClientImpl);            // remove Client from server array
                         System.out.println("exit");
                         break;
                     }
 
-                    default:
-                    {
+                    default: {
+                        // wrong input
+
                         System.out.println("false activity");
                         break;
                     }

@@ -57,7 +57,7 @@ public class ChatServerImpl extends UnicastRemoteObject implements ChatServer
             }
         }
         allClients.add(objRef);
-        objRef.print("add client.");
+        objRef.print("added client.");
         return true;
     }
 
@@ -67,16 +67,6 @@ public class ChatServerImpl extends UnicastRemoteObject implements ChatServer
         allClients.remove(objRef);
     }
 
-    /**
-     * To send Messages
-     * @param name
-     *          Who send the message
-     *
-     * @param msg
-     *          sending message
-     *
-     * @throws RemoteException
-     */
     public synchronized void sendMessage(String name, String msg) throws RemoteException
     {
         for (Iterator<ChatClient> iter = allClients.iterator(); iter.hasNext();)
