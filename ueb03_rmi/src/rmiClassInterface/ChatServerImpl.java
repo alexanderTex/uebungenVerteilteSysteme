@@ -39,9 +39,10 @@ public class ChatServerImpl extends UnicastRemoteObject implements ChatServer
     //    methods
     // \===============================================================================================/
 
-    public synchronized boolean addClient(ChatClient objRef) throws RemoteException
+    public synchronized boolean addClient(ChatClient chatClient) throws RemoteException
     {
-        String name = objRef.getName();
+        String name = chatClient.getName();
+
         for (Iterator<ChatClient> iter = allClients.iterator(); iter.hasNext(); )
         {
             ChatClient cc = iter.next();
@@ -56,14 +57,14 @@ public class ChatServerImpl extends UnicastRemoteObject implements ChatServer
                 iter.remove();
             }
         }
-        allClients.add(objRef);
-        objRef.print("added client.");
+        allClients.add(chatClient);
+        chatClient.print("added client");
         return true;
     }
 
     public synchronized void removeClient(ChatClient objRef) throws RemoteException
     {
-        objRef.print("client remove successful.");
+        objRef.print("client remove successful");
         allClients.remove(objRef);
     }
 
