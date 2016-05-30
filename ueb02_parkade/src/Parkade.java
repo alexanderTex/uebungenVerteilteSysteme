@@ -64,11 +64,11 @@ public class Parkade
      */
     public synchronized void enter(Car car) throws NullPointerException
     {
-        this.watingQueue.add(car);
+        this.watingQueue.offer(car);
         System.out.println(car.nr + "bin da");
 
         // when false(no free parking space) -> wait
-        while (!this.watingQueue.peek().equals(car) && !parking)
+        while (!this.watingQueue.peek().equals(car) || !parking)
         {
             try
             {
@@ -80,7 +80,7 @@ public class Parkade
         // add car to parkade(into the Queue)
         this.parkSpace.add(car);
 
-        this.watingQueue.remove(car);
+        this.watingQueue.poll();
 
         // to observe the free parking spaces
         this.count++;
