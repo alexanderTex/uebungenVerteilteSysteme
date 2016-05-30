@@ -16,7 +16,7 @@ public class Car extends Thread {
     // /----------------------------------------------------/
 
     private Parkade parkade;    // parkade
-    private int nr;             // serial number
+    public int nr;             // serial number
 
     // /===============================================================================================\
     //    constructors

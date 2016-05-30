@@ -20,6 +20,7 @@ public class Parkade
     // /----------------------------------------------------/
 
     private Queue parkSpace;            // Parkade
+    private Queue watingQueue;
     private int parkPlaces;             // parkplaces overall
     private boolean parking = true;     // status
     private int count = 0;              // check for free places
@@ -36,6 +37,7 @@ public class Parkade
     Parkade()
     {
         this.parkSpace = new LinkedList();
+        this.watingQueue = new LinkedList<>();
         this.parkPlaces = 10;
     }
 
@@ -47,6 +49,7 @@ public class Parkade
     Parkade(int parkPlaces)
     {
         this.parkSpace = new LinkedList();
+        this.watingQueue = new LinkedList<>();
         this.parkPlaces = parkPlaces;
     }
 
@@ -61,8 +64,11 @@ public class Parkade
      */
     public synchronized void enter(Car car) throws NullPointerException
     {
+        this.watingQueue.add(car);
+        System.out.println(car.nr + "bin da");
+
         // when false(no free parking space) -> wait
-        while (!parking)
+        while (!this.watingQueue.peek().equals(car) && !parking)
         {
             try
             {
@@ -73,6 +79,8 @@ public class Parkade
 
         // add car to parkade(into the Queue)
         this.parkSpace.add(car);
+
+        this.watingQueue.remove(car);
 
         // to observe the free parking spaces
         this.count++;

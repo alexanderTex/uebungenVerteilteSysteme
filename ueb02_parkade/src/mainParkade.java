@@ -10,7 +10,7 @@ public class mainParkade
     public static void main(String[] ars)
     {
         // create parkade
-        Parkade parkade = new Parkade(4);
+        Parkade parkade = new Parkade(2);
 
         // create cars
         Car c1 = new Car(parkade,01);
