@@ -51,7 +51,7 @@ public class Car extends Thread {
         // fake delay for the car to get off.
         try
         {
-            this.sleep((int)(Math.random() * 3000));
+            this.sleep((int)(Math.random() * 5000));
         }
         catch (InterruptedException e){}
 

@@ -14,7 +14,7 @@ public class mainParkade
 
         // create cars
         Car c1 = new Car(parkade,01);
-        Car c2= new Car(parkade,02);
+        Car c2 = new Car(parkade,02);
         Car c3 = new Car(parkade,03);
         Car c4 = new Car(parkade,04);
         Car c5 = new Car(parkade,05);
