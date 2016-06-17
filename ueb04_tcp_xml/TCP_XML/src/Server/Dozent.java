@@ -2,6 +2,12 @@ package Server;
 
 import java.io.Serializable;
 
+/**
+ * Represents Profs
+ * @author  Sascha Bussian, 549087
+ *          Alexander Luedke, 548965
+ * @version 1.0
+ */
 public class Dozent implements Serializable, IPerson {
 	private static final long serialVersionUID = 3835600414353335826L;
 	private String surname;
@@ -12,6 +18,8 @@ public class Dozent implements Serializable, IPerson {
     private String stadt;
     private String persNr;
     private String fachbereich;
+
+	/* Setter + Getter */
 
     public String getSurname() {
         return surname;
@@ -76,10 +84,10 @@ public class Dozent implements Serializable, IPerson {
     public String getFachbereich() {
         return fachbereich;
     }
-    
+
     public String toString() {
-		return this.getClass().getName() + ": " 
-				+ getSurname() + " " 
+		return this.getClass().getName() + ": "
+				+ getSurname() + " "
 				+ getLastname() + " "
 				+ getPersNr() + " "
 				+ getFachbereich();

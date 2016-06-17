@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+    <!-- Structure of XML, which will be transmitted to the Server -->
 
     <xs:element name="Student" type="StudentInfo" />
     <xs:element name="Dozent" type="DozentInfo" />

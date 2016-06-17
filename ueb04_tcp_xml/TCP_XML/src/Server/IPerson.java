@@ -1,6 +1,13 @@
 package Server;
 
+/**
+ * Implimented by Persons
+ * @author  Sascha Bussian, 549087
+ *          Alexander Luedke, 548965
+ * @version 1.0
+ */
 public interface IPerson {
+    /* Setter + Getter */
     String getSurname();
     void setSurname(String surname);
     String getLastname();
