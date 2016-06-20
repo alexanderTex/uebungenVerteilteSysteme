@@ -36,7 +36,7 @@ public class Connection extends Thread {
 
             // Setup Validator
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Schema schema = factory.newSchema(new File("StudentDozent.xsd"));
+            Schema schema = factory.newSchema(new File("Server/StudentDozent.xsd"));
             validator = schema.newValidator();
 
             // Start the Thread
