@@ -1,0 +1,22 @@
+Alexander Luedke, 548965
+Sascha Bussian, 549087
+
+Aufgabe 5
+
+(a)
+    Die verwendete API ist die deprecated GOOGLE Finance API.
+    http://finance.google.com/
+
+(b)
+    Die Semantik der Datenrepräsentation wird derzeit ger nicht beschrieben, da
+    die API seit 2012 nicht mehr öffentlich supported wird.
+
+(c)
+    Siehe Application. Beispielhafte Eingaben wären z. B. GOOG, AAPL ....
+    oder auch NASDAQ:GOOG
+
+(d)
+    Je nachdem für was die Stock-Daten gebraucht weren, würden wir den Zyklus
+    zwischen 10 - 30 Minuten ansiedeln. Um das zu realisieren wir ein CRON job
+    einrichten, der das Programm alle 10 - 30 Minuten startet und das Ergebis
+    entweder in eine Datei oder in eine Datenbank speichert.

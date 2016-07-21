@@ -1,3 +1,9 @@
+/**
+ * @author  Sascha Bussian, 549087
+ *          Alexander Luedke, 548965
+ *
+ * Repräsentiert ein Stock
+ */
 public class Stock {
     private String name;
     private double value;
